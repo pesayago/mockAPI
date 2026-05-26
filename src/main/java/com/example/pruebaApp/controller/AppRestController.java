@@ -46,8 +46,9 @@ public class AppRestController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		System.out.println("Ejecuto el codigo");
 		System.out.println(url);
-        File archivoJson = new File("main\\resources\\static\\"+url);
+        File archivoJson = new File("app"+File.separator + "main" + File.separator + "resources"+ File.separator +"static"+File.separator+url);
         //File archivoJson = new File("app/main/resources/static/"+url); para windows
+        System.out.println(archivoJson);
         Optional<JsonNode>  json = null;
 
         // Convierte el archivo JSON a un objeto Java
