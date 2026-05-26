@@ -24,7 +24,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 
 # Production Stage for Spring boot application image
-FROM openjdk:20-jdk-slim as production
+FROM openjdk:11-jdk-slim as production
 ARG DEPENDENCY=/app/target/dependency
 
 # Copy the dependency application file from build stage artifact
