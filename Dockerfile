@@ -1,5 +1,5 @@
 # Build Stage for Spring boot application image
-FROM openjdk:20-jdk-slim as build
+FROM openjdk:11-jdk-slim as build
 
 WORKDIR /app
 
