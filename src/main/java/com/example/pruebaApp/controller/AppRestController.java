@@ -46,7 +46,7 @@ public class AppRestController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		System.out.println("Ejecuto el codigo");
 		System.out.println(url);
-        File archivoJson = new File("app\\main\\resources\\static\\"+url);
+        File archivoJson = new File("main\\resources\\static\\"+url);
         //File archivoJson = new File("app/main/resources/static/"+url); para windows
         Optional<JsonNode>  json = null;
 
