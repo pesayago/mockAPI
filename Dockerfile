@@ -22,6 +22,9 @@ COPY src src
 RUN ./mvnw package
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
+
+# Production Stage for Spring boot application image
+FROM openjdk:11-jdk-slim as production
 ARG DEPENDENCY=/app/target/dependency
 
 # Copy the dependency application file from build stage artifact
@@ -30,5 +33,5 @@ COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 # Run the Spring boot application
-ENTRYPOINT ["java", "-cp", "app:app/lib/*","com.mrInstruments.backend.MrInstrumentsApplication"]
+ENTRYPOINT ["java", "-cp", "app:app/lib/*","com.example.pruebaApp.Application"]
 EXPOSE 8080
