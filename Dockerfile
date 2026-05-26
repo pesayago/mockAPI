@@ -6,5 +6,5 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-COPY --from=build /app/target/Object.json app/main/resources/static/object.json
+COPY --from=build /app/target/object.json app/main/resources/static/object.json
 ENTRYPOINT ["java", "-jar", "app.jar"]
