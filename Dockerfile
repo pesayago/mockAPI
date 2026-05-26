@@ -30,7 +30,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 # Copy the dependency application file from build stage artifact
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+# COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 # Run the Spring boot application
 ENTRYPOINT ["java", "-cp", "app:app/lib/*","com.example.pruebaApp.Application"]
