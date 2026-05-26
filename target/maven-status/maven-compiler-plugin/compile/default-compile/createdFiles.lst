@@ -1,3 +1,4 @@
 com\example\pruebaApp\controller\AppRestController.class
 com\example\pruebaApp\Application.class
+com\example\pruebaApp\JacksonConfiguration.class
 com\example\pruebaApp\model\Greeting.class
