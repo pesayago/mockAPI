@@ -41,6 +41,8 @@ public class AppRestController {
 	public ResponseEntity<JsonNode> leerJson() throws IOException {
 		//String url = System.getenv("JAVA_HOME"); leo variables de entorno
 		//String url = System.getProperty("user.dir"); leo variables de internas de JAVA
+		String directorioActual = System.getProperty("user.dir");
+		System.out.println("Directorio de trabajo: " + directorioActual);
 		ObjectMapper objectMapper = new ObjectMapper();
 		System.out.println("Ejecuto el codigo");
 		System.out.println(url);
