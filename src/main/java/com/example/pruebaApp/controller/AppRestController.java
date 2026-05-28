@@ -1,6 +1,5 @@
 package com.example.pruebaApp.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +22,10 @@ import java.util.stream.Collectors;
 
 @RestController
 public class AppRestController {
-	
-	private static final String URL = null;
+
 	ObjectMapper objectMapper = new ObjectMapper();
-	@Value("${java.net.URL}")
-	private String url;
+	//@Value("${java.net.URL}")//leo variable de app
+	//private String url;
 	
 	@GetMapping(path = "/getBar" )
 	public ResponseEntity<JsonNode> getAllBares(){
@@ -46,21 +44,23 @@ public class AppRestController {
 	@GetMapping(path = "/getJson" )
 	public ResponseEntity<JsonNode> leerJson() throws IOException {
 		//String url = System.getenv("JAVA_HOME"); leo variables de entorno
-		//String url = System.getProperty("user.dir"); leo variables de internas de JAVA
+		//String url = System.getProperty("user.dir"); leo variables internas de JAVA
 		String directorioActual = System.getProperty("user.dir");
 		System.out.println("Directorio de trabajo: " + directorioActual);
 		ObjectMapper objectMapper = new ObjectMapper();
-		System.out.println("Ejecuto el codigo");
-		System.out.println(url);
+		System.out.println("\n### Ejecuto comandos varios - INICIO ### ");
+		//System.out.println(url);
 		String rutaClase = AppRestController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		leerArchivo();
 		verComando();
 		System.out.println("rutaClase: " + rutaClase);
+		System.out.println("### Ejecuto comandos varios - FIN ### \n");
         //File archivoJson = new File("app"+File.separator +"src"+File.separator + "main" + File.separator + "resources"+ File.separator +"static"+File.separator+url);
         //File archivoJson = new File("src/main/resources/static/"+url);//para windows
 		File archivoJson = new File("object.json");
+		System.out.println("Ejecuto el codigo");
         System.out.println(archivoJson);
-        Optional<JsonNode> json = null;
+        Optional<JsonNode> json ;
 
         // Convierte el archivo JSON a un objeto Java
 		json = Optional.ofNullable(objectMapper.readTree(archivoJson));
