@@ -10,10 +10,16 @@ import com.example.pruebaApp.model.Greeting;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
+import java.io.*;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 @RestController
 public class AppRestController {
@@ -46,10 +52,15 @@ public class AppRestController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		System.out.println("Ejecuto el codigo");
 		System.out.println(url);
-        File archivoJson = new File("src"+File.separator + "main" + File.separator + "resources"+ File.separator +"static"+File.separator+url);
+		String rutaClase = AppRestController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		leerArchivo();
+		verComando();
+		System.out.println("rutaClase: " + rutaClase);
+        //File archivoJson = new File("app"+File.separator +"src"+File.separator + "main" + File.separator + "resources"+ File.separator +"static"+File.separator+url);
         //File archivoJson = new File("src/main/resources/static/"+url);//para windows
+		File archivoJson = new File("object.json");
         System.out.println(archivoJson);
-        Optional<JsonNode>  json = null;
+        Optional<JsonNode> json = null;
 
         // Convierte el archivo JSON a un objeto Java
 		json = Optional.ofNullable(objectMapper.readTree(archivoJson));
@@ -58,6 +69,57 @@ public class AppRestController {
 		return ResponseEntity.ok().body(jsonNode);
 	}
 
+	public void leerArchivo() {
+		// La ruta comienza desde la raíz de tus recursos (ej. src/main/resources/)
+		String rutaArchivo = "/object.json";
+
+		try (InputStream inputStream = getClass().getResourceAsStream(rutaArchivo)) {
+			if (inputStream != null) {
+				String contenido = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))
+						.lines().collect(Collectors.joining("\n"));
+				System.out.println(contenido);
+			} else {
+				System.out.println("Archivo no encontrado en el classpath.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void verComando() {
+			// Construimos el comando como una lista (más seguro y evita problemas con espacios)
+			List<String> comando = new ArrayList<>();
+			comando.add("/bin/bash");
+			comando.add("-c");
+			comando.add("ls");
+			comando.add("ls -la /var/log"); // Reemplaza con tu comando
+
+			ProcessBuilder pb = new ProcessBuilder(comando);
+
+			// Combina la salida de error estándar (stderr) con la salida estándar (stdout)
+			pb.redirectErrorStream(true);
+
+			try {
+				// Ejecutamos el comando
+				Process proceso = pb.start();
+
+				// Leemos la salida del comando
+				try (BufferedReader reader = new BufferedReader(
+						new InputStreamReader(proceso.getInputStream()))) {
+
+					String linea;
+					while ((linea = reader.readLine()) != null) {
+						System.out.println(linea);
+					}
+				}
+
+				// Obtenemos el código de salida (0 = éxito, distinto de 0 = error)
+				int exitCode = proceso.waitFor();
+				System.out.println("\nProceso finalizado con código: " + exitCode);
+
+			} catch (IOException | InterruptedException e) {
+				e.printStackTrace();
+			}
+	}
+
 }
-
-
