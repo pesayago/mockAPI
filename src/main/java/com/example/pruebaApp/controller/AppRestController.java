@@ -2,6 +2,7 @@ package com.example.pruebaApp.controller;
 
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +41,7 @@ public class AppRestController {
 		
 		return ResponseEntity.ok().body(json);		
 	}
-	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping(path = "/getJson" )
 	public ResponseEntity<JsonNode> leerJson() throws IOException {
 		//String url = System.getenv("JAVA_HOME"); leo variables de entorno
