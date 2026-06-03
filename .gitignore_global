@@ -15,7 +15,7 @@ local.properties
 .recommenders
 
 # Custom user options
-.json
+*.json
 
 # External tool builders
 .externalToolBuilders/
