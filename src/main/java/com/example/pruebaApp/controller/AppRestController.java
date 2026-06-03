@@ -41,7 +41,7 @@ public class AppRestController {
 		
 		return ResponseEntity.ok().body(json);		
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = {"http://localhost:3000", "https://my-marketplace-app-nine.vercel.app"})
 	@GetMapping(path = "/getJson" )
 	public ResponseEntity<JsonNode> leerJson() throws IOException {
 		//String url = System.getenv("JAVA_HOME"); leo variables de entorno
@@ -53,7 +53,7 @@ public class AppRestController {
 		//System.out.println(url);
 		String rutaClase = AppRestController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		leerArchivo();
-		verComando();
+		//verComando();
 		System.out.println("rutaClase: " + rutaClase);
 		System.out.println("### Ejecuto comandos varios - FIN ### \n");
         //File archivoJson = new File("app"+File.separator +"src"+File.separator + "main" + File.separator + "resources"+ File.separator +"static"+File.separator+url);

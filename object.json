@@ -1,0 +1,40 @@
+[{
+   "id":1,
+   "name":"Handmade Candle Set",
+   "price":"$24.00",
+   "image":"/img/HandmadeCandleSet.webp",
+   "description":"A warm soy candle trio with lavender, vanilla, and citrus scents.",
+   "badge":"Best Seller"
+},
+{
+   "id":2,
+   "name":"Gift Wrap Bundle",
+   "price":"$16.00",
+   "image":"/img/GiftWrapBundle.webp",
+   "description":"Premium paper, ribbon, and gift tags for beautiful presentation.",
+   "badge":"New"
+},
+{
+   "id":3,
+   "name":"Keepsake Jewelry Box",
+   "price":"$32.00",
+   "image":"/img/KeepsakeJewelryBox.webp",
+   "description":"A small wooden box with velvet lining for special keepsakes.",
+   "badge":"Premium"
+},
+{
+   "id":4,
+   "name":"Artisan Soap Collection",
+   "price":"$18.00",
+   "image":"/img/ArtisanSoapCollection.webp",
+   "description":"Natural soap bars in rose, mint, and honey fragrances.",
+   "badge":"Eco-Friendly"
+},
+{
+   "id":5,
+   "name":"Luxury Gift Box",
+   "price":"$45.00",
+   "image":"/img/LuxuryGiftBox.webp",
+   "description":"Curated luxury items in an elegant presentation box.",
+   "badge":"Popular"
+}]
