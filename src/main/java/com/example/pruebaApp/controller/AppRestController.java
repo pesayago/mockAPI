@@ -1,5 +1,6 @@
 package com.example.pruebaApp.controller;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @RestController
 public class AppRestController {
 
+	static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AppRestController.class);
 	ObjectMapper objectMapper = new ObjectMapper();
 	//@Value("${java.net.URL}")//leo variable de app
 	//private String url;
@@ -83,7 +85,7 @@ public class AppRestController {
 				System.out.println("Archivo no encontrado en el classpath.");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error al leer el archivo", e);
 		}
 	}
 
@@ -110,16 +112,16 @@ public class AppRestController {
 
 					String linea;
 					while ((linea = reader.readLine()) != null) {
-						System.out.println(linea);
+						logger.info(linea);
 					}
 				}
 
 				// Obtenemos el código de salida (0 = éxito, distinto de 0 = error)
 				int exitCode = proceso.waitFor();
-				System.out.println("\nProceso finalizado con código: " + exitCode);
+				logger.info("\nProceso finalizado con código: " + exitCode);
 
 			} catch (IOException | InterruptedException e) {
-				e.printStackTrace();
+				logger.error("Error al ejecutar el comando", e);
 			}
 	}
 
