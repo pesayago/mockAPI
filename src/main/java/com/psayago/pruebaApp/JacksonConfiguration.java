@@ -1,4 +1,4 @@
-package com.example.pruebaApp;
+package com.psayago.pruebaApp;
 
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;

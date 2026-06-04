@@ -1,4 +1,4 @@
-package com.example.pruebaApp;
+package com.psayago.pruebaApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

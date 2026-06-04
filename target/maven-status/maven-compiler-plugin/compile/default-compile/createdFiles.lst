@@ -1,4 +1,4 @@
-com\example\pruebaApp\controller\AppRestController.class
-com\example\pruebaApp\Application.class
-com\example\pruebaApp\JacksonConfiguration.class
-com\example\pruebaApp\model\Greeting.class
+com\psayago\pruebaApp\Application.class
+com\psayago\pruebaApp\JacksonConfiguration.class
+com\psayago\pruebaApp\controller\AppRestController.class
+com\psayago\pruebaApp\model\Greeting.class
