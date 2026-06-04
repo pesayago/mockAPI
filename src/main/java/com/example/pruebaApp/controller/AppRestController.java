@@ -1,5 +1,6 @@
 package com.example.pruebaApp.controller;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 @RestController
 public class AppRestController {
 
-	static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AppRestController.class);
+	static Logger logger = LogManager.getLogger(AppRestController.class);
 	ObjectMapper objectMapper = new ObjectMapper();
 	//@Value("${java.net.URL}")//leo variable de app
 	//private String url;
