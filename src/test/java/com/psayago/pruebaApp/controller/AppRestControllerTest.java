@@ -1,6 +1,6 @@
-package com.example.pruebaApp.controller;
+package com.psayago.pruebaApp.controller;
 
-import com.example.pruebaApp.model.Greeting;
+import com.psayago.pruebaApp.model.Greeting;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -56,8 +55,6 @@ class AppRestControllerTest {
     void getAllBares() {
 
         Greeting greeting = new Greeting(0, "Hello Ibis");
-
-        JsonNode json = objectMapper.valueToTree(greeting);
 
         try {
             mockMvc.perform(get("/getBar")

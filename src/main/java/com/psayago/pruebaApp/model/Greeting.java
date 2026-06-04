@@ -1,4 +1,4 @@
-package com.example.pruebaApp.model;
+package com.psayago.pruebaApp.model;
 
 import java.io.Serializable;
 
